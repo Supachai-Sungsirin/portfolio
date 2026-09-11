@@ -19,10 +19,10 @@ import {
   Cpu,
 } from "lucide-react";
 
-import fertilizerShopImage from "./assets/fertilizer-shop.png";
-import airBookingImage from "./assets/air-booking.png";
-import fitBuddyImage from "./assets/fitbuddy.png";
-import aibusinessImage from "./assets/ai-business.png";
+// import fertilizerShopImage from "./assets/fertilizer-shop.png";
+// import airBookingImage from "./assets/air-booking.png";
+// import fitBuddyImage from "./assets/fitbuddy.png";
+// import aibusinessImage from "./assets/ai-business.png";
 
 // Custom SVG Icons for Brand Logos (Avoids lucide-react version mismatch)
 const Github = ({ className = "w-5 h-5" }) => (
@@ -134,7 +134,7 @@ const DATA = {
 
       demo: "#",
 
-      image: fertilizerShopImage,
+      // image: fertilizerShopImage,
     },
 
     {
@@ -160,7 +160,7 @@ const DATA = {
 
       demo: "#",
 
-      image: airBookingImage,
+      // image: airBookingImage,
     },
 
     {
@@ -178,7 +178,7 @@ const DATA = {
         "ได้เรียนรู้และประยุกต์ใช้เทคโนโลยี AI, NLP และ LLM ในการสร้างระบบผู้ช่วยอัจฉริยะ",
       github: "https://github.com/Supachai-Sungsirin/FitBuddy",
       demo: "#",
-      image: fitBuddyImage,
+      // image: fitBuddyImage,
     },
 
     {
@@ -196,7 +196,7 @@ const DATA = {
         "ได้สร้าง Workflow ที่เชื่อมต่อ AI, Vector Database และ Messaging Platform เพื่อทำงานแบบอัตโนมัติ",
       github: "https://github.com/Ratchawanlop/Daily-News",
       demo: "#",
-      image: aibusinessImage,
+      // image: aibusinessImage,
     },
   ],
   experience: [
@@ -322,7 +322,6 @@ export default function App() {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Vibe Process", href: "#process" },
     { name: "Contact", href: "#contact" },
   ];
 
