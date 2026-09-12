@@ -19,10 +19,11 @@ import {
   Cpu,
 } from "lucide-react";
 
-// import fertilizerShopImage from "./assets/fertilizer-shop.png";
-// import airBookingImage from "./assets/air-booking.png";
-// import fitBuddyImage from "./assets/fitbuddy.png";
-// import aibusinessImage from "./assets/ai-business.png";
+
+import fertilizerShopImage from "./assets/Fertilizer-shop.png";
+import airBookingImage from "./assets/air-booking.png";
+import fitBuddyImage from "./assets/Fitbuddy.png";
+import aibusinessImage from "./assets/ai-business.png";
 
 // Custom SVG Icons for Brand Logos (Avoids lucide-react version mismatch)
 const Github = ({ className = "w-5 h-5" }) => (
@@ -134,7 +135,7 @@ const DATA = {
 
       demo: "#",
 
-      // image: fertilizerShopImage,
+      image: fertilizerShopImage,
     },
 
     {
@@ -160,7 +161,7 @@ const DATA = {
 
       demo: "#",
 
-      // image: airBookingImage,
+      image: airBookingImage,
     },
 
     {
@@ -178,7 +179,7 @@ const DATA = {
         "ได้เรียนรู้และประยุกต์ใช้เทคโนโลยี AI, NLP และ LLM ในการสร้างระบบผู้ช่วยอัจฉริยะ",
       github: "https://github.com/Supachai-Sungsirin/FitBuddy",
       demo: "#",
-      // image: fitBuddyImage,
+      image: fitBuddyImage,
     },
 
     {
@@ -195,8 +196,8 @@ const DATA = {
       outcome:
         "ได้สร้าง Workflow ที่เชื่อมต่อ AI, Vector Database และ Messaging Platform เพื่อทำงานแบบอัตโนมัติ",
       github: "https://github.com/Ratchawanlop/Daily-News",
-      demo: "#",
-      // image: aibusinessImage,
+      demo: "https://supachai-sungsirin.github.io/",
+      image: aibusinessImage,
     },
   ],
   experience: [
@@ -217,48 +218,6 @@ const DATA = {
       period: "2023",
       description:
         "ทำงานพาร์ทไทม์ในร้านสะดวกซื้อ 7-Eleven โดยรับผิดชอบด้านการบริการลูกค้า การจัดเรียงสินค้า และการจัดการสต็อกสินค้า",
-    },
-  ],
-  vibeCoding: [
-    {
-      q: "01 ใช้อะไรทำ?",
-      a: "ใช้ ChatGPT / Claude ช่วยคิดโครงสร้างและร่างโค้ด, ใช้ React + Vite เป็น Framework หลัก, Tailwind CSS สำหรับดีไซน์ และ Deploy ผ่าน Vercel",
-    },
-    {
-      q: "02 เริ่มจากอะไร?",
-      a: "เริ่มจากการรวบรวม Profile, Skill, ผลงานใน GitHub และวิเคราะห์ Requirement จาก Assignment Brief เพื่อออกแบบ Information Architecture (IA) ก่อน",
-    },
-    {
-      q: "03 Prompt สำคัญ?",
-      a: "Prompt หลักคือการกำหนด Context & Goal: 'สร้าง Portfolio Web App ด้วย React+Tailwind โทน Dark Mode สามารถสลับ Light Mode ได้ มีการแบ่ง 6 Section ชัดเจน...'",
-    },
-    {
-      q: "04 AI ช่วยอะไร?",
-      a: "AI ช่วยสร้าง Boilerplate Code อย่างรวดเร็ว, ช่วยออกแบบ UI Components, สร้างฟังก์ชัน Dark/Light Mode และคิดไอเดียการวาง Layout เล่าเรื่องโปรเจกต์",
-    },
-    {
-      q: "05 เจอปัญหาอะไร?",
-      a: "พบปัญหาเรื่อง Tailwind v4 เปลี่ยนวิธี Config ทำให้รัน CLI แบบเดิมไม่ผ่าน และ Mobile Navigation แสดงผลทับซ้อนกันในหน้าจอขนาดเล็ก",
-    },
-    {
-      q: "06 แก้อย่างไร?",
-      a: "แก้ปัญหาโดยเปลี่ยนมาใช้ Tailwind v3 ล็อกเวอร์ชันติดตั้ง และสั่งให้ AI เขียน Mobile Menu แบบ Hamburger Slide-out ที่รองรับ Responsive",
-    },
-    {
-      q: "07 AI ทำผิดตรงไหน?",
-      a: "AI พยายามใส่ Animation Library ขนาดใหญ่เกินความจำเป็น (เช่น Framer Motion) ซึ่งอาจทำให้เว็บโหลดช้า",
-    },
-    {
-      q: "08 ปรับเองตรงไหน?",
-      a: "ปรับแก้ Prompt ให้ใช้เฉพาะ CSS Transitions และ Utility Classes ของ Tailwind พร้อมทั้งปรับเปลี่ยนข้อความและเนื้อหาโปรเจกต์ให้เป็นข้อมูลจริงทั้งหมด",
-    },
-    {
-      q: "09 ทำไม Design แบบนี้?",
-      a: "เลือกใช้ Dark Theme เป็นหลักด้วยสีโทน Slate-950 ตัดกับ Accent สี Blue/Purple ให้ลุค Modern Tech / Cyber เหมาะสมกับสายงาน Developer",
-    },
-    {
-      q: "10 ทำใหม่จะปรับอะไร?",
-      a: "ใน Iteration ถัดไปอยากเพิ่มระบบ Dynamic Fetch ข้อมูล Repository โดยตรงจาก GitHub API และเพิ่มระบบ Live Search / Filter หมวดหมู่ผลงาน",
     },
   ],
 };
