@@ -1,9 +1,6 @@
 import { motion } from "motion/react";
 
-import {
-  ArrowUpRight,
-  Code2,
-} from "lucide-react";
+import { ArrowUpRight, Code2 } from "lucide-react";
 
 export default function ProjectCard({ project, index, onClick }) {
   const accentClasses = {
@@ -35,10 +32,7 @@ export default function ProjectCard({ project, index, onClick }) {
   };
 
   return (
-    <motion.a
-      href={project.github}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.article
       initial={{
         opacity: 0,
         y: 30,
@@ -60,29 +54,21 @@ export default function ProjectCard({ project, index, onClick }) {
       }}
       onClick={onClick}
       className="
-        group
-        relative
-
-        min-h-[340px]
-
-        overflow-hidden
-
-        rounded-[1.75rem]
-
-        border
-        border-[var(--color-border)]
-
-        bg-[var(--color-surface)]
-
-        p-6
-
-        transition-all
-        duration-300
-
-        hover:shadow-xl
-
-        md:p-8
-        "
+      group
+      relative
+      min-h-[340px]
+      cursor-pointer
+      overflow-hidden
+      rounded-[1.75rem]
+      border
+      border-[var(--color-border)]
+      bg-[var(--color-surface)]
+      p-6
+      transition-all
+      duration-300
+      hover:shadow-xl
+      md:p-8
+    "
     >
       {/* Gradient */}
 
@@ -300,6 +286,6 @@ export default function ProjectCard({ project, index, onClick }) {
           />
         </div>
       </div>
-    </motion.a>
+    </motion.article>
   );
 }

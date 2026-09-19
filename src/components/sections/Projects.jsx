@@ -13,21 +13,13 @@ import { useState } from "react";
 import ProjectDetail from "./ProjectDetail";
 
 export default function Projects() {
+  const featuredProject = projects.find((project) => project.featured);
 
-  const featuredProject = projects.find(
-    (project) => project.featured
-  );
+  const otherProjects = projects.filter((project) => !project.featured);
 
-  const otherProjects = projects.filter(
-    (project) => !project.featured
-  );
-
-  const [selectedProject, setSelectedProject] =
-  useState(null);
-
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-
     <section
       id="work"
       className="
@@ -40,7 +32,6 @@ export default function Projects() {
         md:py-32
       "
     >
-
       {/* Header */}
 
       <motion.div
@@ -48,26 +39,19 @@ export default function Projects() {
           opacity: 0,
           y: 30,
         }}
-
         whileInView={{
           opacity: 1,
           y: 0,
         }}
-
         viewport={{
           once: true,
           amount: 0.3,
         }}
-
         transition={{
           duration: 0.6,
         }}
       >
-
-        <p className="section-kicker">
-          Selected Work / 02
-        </p>
-
+        <p className="section-kicker">Selected Work / 02</p>
 
         <div
           className="
@@ -80,7 +64,6 @@ export default function Projects() {
             md:justify-between
           "
         >
-
           <h2
             className="
               max-w-3xl
@@ -95,10 +78,8 @@ export default function Projects() {
           >
             Things I've built
             <br />
-
             along the way.
           </h2>
-
 
           <p
             className="
@@ -108,31 +89,22 @@ export default function Projects() {
               text-[var(--color-muted)]
             "
           >
-            A collection of full-stack systems,
-            business applications, and AI experiments.
+            A collection of full-stack systems, business applications, and AI
+            experiments.
           </p>
-
         </div>
-
       </motion.div>
-
-
 
       {/* Featured Project */}
 
       {featuredProject && (
-
         <div className="mt-12">
-
           <FeaturedProject
             project={featuredProject}
+            onClick={() => setSelectedProject(featuredProject)}
           />
-
         </div>
-
       )}
-
-
 
       {/* Project Grid */}
 
@@ -146,16 +118,14 @@ export default function Projects() {
           md:grid-cols-2
         "
       >
-
-        {otherProjects.map(
-          (project, index) => (
-            <ProjectCard project={project}onClick={() => setSelectedProject(project)}/>
-          )
-        )}
-
+        {otherProjects.map((project, index) => (
+          <ProjectCard
+            project={project}
+            index={index}
+            onClick={() => setSelectedProject(project)}
+          />
+        ))}
       </div>
-
-
 
       {/* View GitHub */}
 
@@ -163,33 +133,25 @@ export default function Projects() {
         initial={{
           opacity: 0,
         }}
-
         whileInView={{
           opacity: 1,
         }}
-
         viewport={{
           once: true,
         }}
-
         transition={{
           delay: 0.2,
         }}
-
         className="
           mt-10
           flex
           justify-center
         "
       >
-
         <a
           href="https://github.com/Supachai-Sungsirin"
-
           target="_blank"
-
           rel="noopener noreferrer"
-
           className="
             group
 
@@ -206,12 +168,9 @@ export default function Projects() {
             hover:text-[var(--color-text)]
           "
         >
-
           View all projects on GitHub
-
           <ArrowUpRight
             size={18}
-
             className="
               transition-transform
 
@@ -219,15 +178,13 @@ export default function Projects() {
               group-hover:-translate-y-1
             "
           />
-
         </a>
-
       </motion.div>
 
-      <ProjectDetail project={selectedProject} onClose={() => setSelectedProject(null)}/>
-
+      <ProjectDetail
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
-
   );
-
 }

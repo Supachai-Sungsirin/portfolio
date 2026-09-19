@@ -1,16 +1,8 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Check,
-  X,
-} from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, X } from "lucide-react";
 
-export default function ProjectDetail({
-  project,
-  onClose,
-}) {
+export default function ProjectDetail({ project, onClose }) {
   useEffect(() => {
     if (!project) return;
 
@@ -88,7 +80,6 @@ export default function ProjectDetail({
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-
             <div
               className="
                 relative
@@ -112,11 +103,8 @@ export default function ProjectDetail({
 
                 shadow-2xl
               "
-              onClick={(event) =>
-                event.stopPropagation()
-              }
+              onClick={(event) => event.stopPropagation()}
             >
-
               {/* Top Bar */}
 
               <div
@@ -135,7 +123,6 @@ export default function ProjectDetail({
                   md:px-7
                 "
               >
-
                 <button
                   onClick={onClose}
                   className="
@@ -155,7 +142,6 @@ export default function ProjectDetail({
                     hover:text-[var(--color-text)]
                   "
                 >
-
                   <ArrowLeft
                     size={17}
                     className="
@@ -165,11 +151,8 @@ export default function ProjectDetail({
                       group-hover:-translate-x-1
                     "
                   />
-
                   Back
-
                 </button>
-
 
                 <div
                   className="
@@ -183,7 +166,6 @@ export default function ProjectDetail({
                 >
                   PROJECT
                 </div>
-
 
                 <button
                   onClick={onClose}
@@ -212,9 +194,7 @@ export default function ProjectDetail({
                 >
                   <X size={17} />
                 </button>
-
               </div>
-
 
               {/* Scroll Area */}
 
@@ -237,11 +217,9 @@ export default function ProjectDetail({
                   md:py-12
                 "
               >
-
                 {/* Header */}
 
                 <div className="max-w-4xl">
-
                   <p
                     className="
                       mb-4
@@ -259,7 +237,6 @@ export default function ProjectDetail({
                   >
                     {project.category}
                   </p>
-
 
                   <h2
                     className="
@@ -280,7 +257,6 @@ export default function ProjectDetail({
                     {project.title}
                   </h2>
 
-
                   <p
                     className="
                       mt-7
@@ -296,12 +272,9 @@ export default function ProjectDetail({
                       md:leading-8
                     "
                   >
-                    {project.longDescription ||
-                      project.description}
+                    {project.longDescription || project.description}
                   </p>
-
                 </div>
-
 
                 {/* Divider */}
 
@@ -315,14 +288,10 @@ export default function ProjectDetail({
                   "
                 />
 
-
                 {/* Overview */}
 
                 <section>
-
-                  <SectionLabel>
-                    Overview
-                  </SectionLabel>
+                  <SectionLabel>Overview</SectionLabel>
 
                   <p
                     className="
@@ -339,18 +308,13 @@ export default function ProjectDetail({
                   >
                     {project.description}
                   </p>
-
                 </section>
-
 
                 {/* Highlights */}
 
                 {project.highlights?.length > 0 && (
                   <section className="mt-10">
-
-                    <SectionLabel>
-                      Key Features
-                    </SectionLabel>
+                    <SectionLabel>Key Features</SectionLabel>
 
                     <div
                       className="
@@ -361,12 +325,10 @@ export default function ProjectDetail({
                         sm:grid-cols-2
                       "
                     >
-
-                      {project.highlights.map(
-                        (item, index) => (
-                          <div
-                            key={index}
-                            className="
+                      {project.highlights.map((item, index) => (
+                        <div
+                          key={index}
+                          className="
                               flex
                               items-start
                               gap-3
@@ -385,10 +347,9 @@ export default function ProjectDetail({
 
                               hover:-translate-y-1
                             "
-                          >
-
-                            <div
-                              className="
+                        >
+                          <div
+                            className="
                                 mt-0.5
 
                                 flex
@@ -407,39 +368,31 @@ export default function ProjectDetail({
 
                                 dark:text-blue-400
                               "
-                            >
-                              <Check size={13} />
-                            </div>
+                          >
+                            <Check size={13} />
+                          </div>
 
-                            <span
-                              className="
+                          <span
+                            className="
                                 text-sm
                                 font-medium
                                 leading-6
 
                                 text-[var(--color-text)]
                               "
-                            >
-                              {item}
-                            </span>
-
-                          </div>
-                        )
-                      )}
-
+                          >
+                            {item}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-
                   </section>
                 )}
-
 
                 {/* Tech Stack */}
 
                 <section className="mt-10">
-
-                  <SectionLabel>
-                    Tech Stack
-                  </SectionLabel>
+                  <SectionLabel>Tech Stack</SectionLabel>
 
                   <div
                     className="
@@ -448,12 +401,10 @@ export default function ProjectDetail({
                       gap-2
                     "
                   >
-
-                    {project.technologies?.map(
-                      (tech) => (
-                        <span
-                          key={tech}
-                          className="
+                    {project.technologies?.map((tech) => (
+                      <span
+                        key={tech}
+                        className="
                             rounded-full
 
                             border
@@ -470,16 +421,12 @@ export default function ProjectDetail({
 
                             text-[var(--color-text)]
                           "
-                        >
-                          {tech}
-                        </span>
-                      )
-                    )}
-
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-
                 </section>
-
 
                 {/* Repository */}
 
@@ -502,9 +449,7 @@ export default function ProjectDetail({
                       sm:justify-between
                     "
                   >
-
                     <div>
-
                       <p
                         className="
                           font-mono
@@ -530,9 +475,7 @@ export default function ProjectDetail({
                       >
                         View this project on GitHub
                       </p>
-
                     </div>
-
 
                     <a
                       href={project.github}
@@ -540,59 +483,44 @@ export default function ProjectDetail({
                       rel="noreferrer"
                       className="
                         group
-
                         inline-flex
                         items-center
                         justify-center
                         gap-2
-
                         rounded-full
-
                         bg-[var(--color-text)]
-
                         px-5
                         py-3
-
                         text-sm
                         font-semibold
-
                         text-[var(--color-bg)]
-
                         transition-all
                         duration-300
-
                         hover:-translate-y-0.5
                         hover:shadow-lg
                       "
                     >
-
+                      View on GitHub
                       <ArrowUpRight
                         size={15}
                         className="
-                          transition-transform
-                          duration-300
-
-                          group-hover:translate-x-0.5
-                          group-hover:-translate-y-0.5
-                        "
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-0.5
+                        group-hover:-translate-y-0.5
+                      "
                       />
-
                     </a>
-
                   </div>
                 )}
-
               </div>
-
             </div>
-
           </motion.div>
         </>
       )}
     </AnimatePresence>
   );
 }
-
 
 /* ========================================
    SMALL COMPONENTS

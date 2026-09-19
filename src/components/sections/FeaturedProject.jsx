@@ -8,7 +8,7 @@ import {
 
 
 export default function FeaturedProject({
-  project,
+  project, onClick 
 }) {
 
   const titleLines =
@@ -17,13 +17,7 @@ export default function FeaturedProject({
 
   return (
 
-    <motion.a
-
-      href={project.github}
-
-      target="_blank"
-
-      rel="noopener noreferrer"
+    <motion.article
 
       initial={{
         opacity: 0,
@@ -47,13 +41,13 @@ export default function FeaturedProject({
       whileHover={{
         y: -4,
       }}
-
+      onClick={onClick}
       className="
         group
 
         relative
         block
-
+        cursor-pointer
         min-h-[520px]
 
         overflow-hidden
@@ -405,7 +399,7 @@ export default function FeaturedProject({
 
       </div>
 
-    </motion.a>
+    </motion.article>
 
   );
 

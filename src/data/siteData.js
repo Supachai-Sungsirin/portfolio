@@ -34,6 +34,8 @@ export const projects = [
   {
     id: "air-technician",
 
+    featured: true,
+
     title: "Air Technician\nBooking System",
 
     category: "Full-Stack Application",
@@ -79,6 +81,9 @@ export const projects = [
     description:
       "A role-based POS and inventory management system for a fertilizer shop.",
 
+    longDescription:
+      "A business management system for a fertilizer shop that supports role-based operations across owners, managers, cashiers, and customers, including sales, inventory, purchasing, promotions, and customer points.",
+
     technologies: [
       "ASP.NET Core",
       "C#",
@@ -87,12 +92,12 @@ export const projects = [
     ],
 
     highlights: [
-      "Automated daily business news collection",
-      "AI-powered news summarization",
-      "RAG-based question answering",
-      "Pinecone vector database",
-      "LINE Messaging API integration",
-      "n8n workflow automation",
+      "Role-based access control",
+      "POS and sales management",
+      "Inventory management",
+      "Purchase order management",
+      "Stock and expiry tracking",
+      "Promotion and discount management",
     ],
 
     github:
@@ -124,6 +129,15 @@ export const projects = [
       "NewsAPI",
     ],
 
+    highlights: [
+      "Automated business news collection",
+      "AI-powered news summarization",
+      "RAG-based question answering",
+      "Pinecone vector database",
+      "LINE Messaging API integration",
+      "n8n workflow automation",
+    ],
+
     github:
       "https://github.com/Ratchawanlop/Daily-News",
 
@@ -142,12 +156,23 @@ export const projects = [
     description:
       "An AI-powered personal fitness assistant using Retrieval-Augmented Generation.",
 
+    longDescription:
+      "An AI-powered fitness assistant that uses Retrieval-Augmented Generation to retrieve relevant fitness knowledge and provide personalized responses based on the available knowledge base.",
+
     technologies: [
       "Python",
       "FastAPI",
       "LangChain",
       "FAISS",
     ],
+
+    highlights: [
+    "Retrieval-Augmented Generation",
+    "LangChain pipeline",
+    "FAISS vector search",
+    "Fitness knowledge retrieval",
+    "AI-powered conversational responses",
+  ],
 
     github:
       "https://github.com/Supachai-Sungsirin/FitBuddy",
@@ -168,11 +193,22 @@ export const projects = [
     description:
       "A role-based warehouse management system for inventory and stock operations.",
 
+    longDescription:
+      "A full-stack warehouse management system designed to manage products, stock movements, and inventory operations through role-based access control.",
+
     technologies: [
       "React",
       "Node.js",
       "Express",
       "MySQL",
+    ],
+
+    highlights: [
+      "Role-based access control",
+      "Product management",
+      "Inventory management",
+      "Stock movement tracking",
+      "Warehouse operations",
     ],
 
     github:
