@@ -1,7 +1,308 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
 @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-    
-    html {
-      scroll-behavior: smooth;
-    }
+@tailwind components;
+@tailwind utilities;
+
+
+/* ========================================
+   THEME VARIABLES
+======================================== */
+
+:root {
+  /* Light Mode - Warm Paper */
+
+  --color-bg: #f5f5f2;
+
+  --color-surface: #ffffff;
+
+  --color-surface-soft: #f0f1f3;
+
+  --color-text: #18181b;
+
+  --color-muted: #6b7280;
+
+  --color-border: rgba(24, 24, 27, 0.1);
+
+  --color-grid: rgba(24, 24, 27, 0.045);
+
+  --color-accent: #2563eb;
+
+
+  /* Typography */
+
+  font-family:
+    "Geist",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ========================================
+   DARK MODE
+======================================== */
+
+.dark {
+  /* Midnight */
+
+  --color-bg: #09090b;
+
+  --color-surface: #111827;
+
+  --color-surface-soft: #18181b;
+
+  --color-text: #f4f4f5;
+
+  --color-muted: #a1a1aa;
+
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  --color-grid: rgba(255, 255, 255, 0.04);
+
+  --color-accent: #60a5fa;
+}
+
+
+/* ========================================
+   BASE
+======================================== */
+
+html {
+  scroll-behavior: smooth;
+
+  background:
+    var(--color-bg);
+
+  color:
+    var(--color-text);
+}
+
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background:
+    var(--color-bg);
+
+  color:
+    var(--color-text);
+
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+
+button,
+a {
+  -webkit-tap-highlight-color:
+    transparent;
+}
+
+
+::selection {
+  background:
+    rgba(59, 130, 246, 0.25);
+}
+
+
+/* ========================================
+   COMPONENTS
+======================================== */
+
+@layer components {
+
+
+  /* Navigation */
+
+  .nav-link {
+    @apply
+      text-sm
+      font-semibold
+      text-zinc-600
+      transition-colors
+      hover:text-zinc-950
+      dark:text-zinc-400
+      dark:hover:text-white;
+  }
+
+
+  /* Section */
+
+  .section-shell {
+    @apply
+      mx-auto
+      min-h-[70svh]
+      max-w-6xl
+      border-t
+      border-[var(--color-border)]
+      px-5
+      py-24
+      md:px-6
+      md:py-32;
+  }
+
+
+  /* Section Label */
+
+  .section-kicker {
+    @apply
+      mb-5
+      font-mono
+      text-xs
+      font-bold
+      uppercase
+      tracking-[0.2em]
+      text-blue-600
+      dark:text-blue-400;
+  }
+
+
+  /* Section Title */
+
+  .section-title {
+    @apply
+      max-w-4xl
+      text-4xl
+      font-black
+      tracking-[-0.05em]
+      md:text-6xl;
+  }
+
+
+  /* Section Description */
+
+  .section-copy {
+    @apply
+      mt-6
+      max-w-2xl
+      text-base
+      leading-8
+      text-zinc-600
+      dark:text-zinc-400
+      md:text-lg;
+  }
+
+}
+
+
+/* ========================================
+   UTILITIES
+======================================== */
+
+@layer utilities {
+
+
+  /* Background Grid */
+
+  .background-grid {
+    background-image:
+
+      linear-gradient(
+        var(--color-grid) 1px,
+        transparent 1px
+      ),
+
+      linear-gradient(
+        90deg,
+        var(--color-grid) 1px,
+        transparent 1px
+      );
+
+    background-size:
+      48px 48px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        black,
+        transparent 82%
+      );
+  }
+
+
+  /* Project Grid */
+
+  .project-grid {
+    background-image:
+
+      linear-gradient(
+        var(--color-grid) 1px,
+        transparent 1px
+      ),
+
+      linear-gradient(
+        90deg,
+        var(--color-grid) 1px,
+        transparent 1px
+      );
+
+    background-size:
+      48px 48px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        black,
+        transparent
+      );
+  }
+
+
+  /* Monospace Font */
+
+  .font-mono {
+    font-family:
+      "JetBrains Mono",
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+  }
+
+}
+
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+
+  html {
+    scroll-behavior:
+      auto;
+  }
+
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    scroll-behavior:
+      auto !important;
+
+  }
+
+}
