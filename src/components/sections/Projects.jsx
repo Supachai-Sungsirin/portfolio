@@ -183,7 +183,9 @@ export default function Projects() {
 
       <ProjectDetail
         project={selectedProject}
+        projects={projects}
         onClose={() => setSelectedProject(null)}
+        onSelectProject={setSelectedProject}
       />
     </section>
   );
