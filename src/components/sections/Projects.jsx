@@ -1,20 +1,14 @@
+import { useState } from "react";
 import { motion } from "motion/react";
-
 import { ArrowUpRight } from "lucide-react";
 
 import { projects } from "../../data/siteData";
-
 import FeaturedProject from "./FeaturedProject";
-
 import ProjectCard from "./ProjectCard";
-
-import { useState } from "react";
-
 import ProjectDetail from "./ProjectDetail";
 
 export default function Projects() {
   const featuredProject = projects.find((project) => project.featured);
-
   const otherProjects = projects.filter((project) => !project.featured);
 
   const [selectedProject, setSelectedProject] = useState(null);
@@ -27,13 +21,11 @@ export default function Projects() {
         max-w-6xl
         px-5
         py-24
-
         md:px-6
         md:py-32
       "
     >
       {/* Header */}
-
       <motion.div
         initial={{
           opacity: 0,
@@ -51,14 +43,15 @@ export default function Projects() {
           duration: 0.6,
         }}
       >
-        <p className="section-kicker">Selected Work / 02</p>
+        <p className="section-kicker">
+          Selected Work / 02
+        </p>
 
         <div
           className="
             flex
             flex-col
             gap-6
-
             md:flex-row
             md:items-end
             md:justify-between
@@ -67,13 +60,10 @@ export default function Projects() {
           <h2
             className="
               max-w-3xl
-
               text-4xl
               font-black
               leading-[1.05]
               tracking-[-0.05em]
-
-              md:text-6xl
             "
           >
             Things I've built
@@ -96,7 +86,6 @@ export default function Projects() {
       </motion.div>
 
       {/* Featured Project */}
-
       {featuredProject && (
         <div className="mt-12">
           <FeaturedProject
@@ -107,19 +96,17 @@ export default function Projects() {
       )}
 
       {/* Project Grid */}
-
       <div
         className="
           mt-4
-
           grid
           gap-4
-
           md:grid-cols-2
         "
       >
         {otherProjects.map((project, index) => (
           <ProjectCard
+            key={project.id}
             project={project}
             index={index}
             onClick={() => setSelectedProject(project)}
@@ -128,7 +115,6 @@ export default function Projects() {
       </div>
 
       {/* View GitHub */}
-
       <motion.div
         initial={{
           opacity: 0,
@@ -154,26 +140,21 @@ export default function Projects() {
           rel="noopener noreferrer"
           className="
             group
-
             inline-flex
             items-center
             gap-2
-
             font-medium
-
             text-[var(--color-muted)]
-
             transition-colors
-
             hover:text-[var(--color-text)]
           "
         >
           View all projects on GitHub
+
           <ArrowUpRight
             size={18}
             className="
               transition-transform
-
               group-hover:translate-x-1
               group-hover:-translate-y-1
             "
@@ -181,6 +162,7 @@ export default function Projects() {
         </a>
       </motion.div>
 
+      {/* Project Detail Modal */}
       <ProjectDetail
         project={selectedProject}
         projects={projects}

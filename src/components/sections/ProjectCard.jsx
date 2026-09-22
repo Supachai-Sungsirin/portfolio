@@ -1,173 +1,118 @@
 import { motion } from "motion/react";
-
 import { ArrowUpRight, Code2 } from "lucide-react";
 
 export default function ProjectCard({ project, index, onClick }) {
   const accentClasses = {
-    green: `
-        from-emerald-500/20
-        to-transparent
-    `,
+    green: "from-emerald-500/20 to-transparent",
+    purple: "from-purple-500/20 to-transparent",
+    orange: "from-orange-500/20 to-transparent",
+    blue: "from-blue-500/20 to-transparent",
+    cyan: "from-cyan-500/20 via-sky-500/5 to-transparent",
+  };
 
-    purple: `
-        from-purple-500/20
-        to-transparent
-    `,
-
-    orange: `
-        from-orange-500/20
-        to-transparent
-    `,
-
-    blue: `
-        from-blue-500/20
-        to-transparent
-    `,
-
-    cyan: `
-        from-cyan-500/20
-        via-sky-500/5
-        to-transparent
-    `,
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onClick();
+    }
   };
 
   return (
     <motion.article
-      initial={{
-        opacity: 0,
-        y: 30,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.2,
-      }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.08,
-      }}
-      whileHover={{
-        y: -6,
-      }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      whileHover={{ y: -6 }}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${project.shortTitle || project.title}`}
       className="
-      group
-      relative
-      min-h-[340px]
-      cursor-pointer
-      overflow-hidden
-      rounded-[1.75rem]
-      border
-      border-[var(--color-border)]
-      bg-[var(--color-surface)]
-      p-6
-      transition-all
-      duration-300
-      hover:shadow-xl
-      md:p-8
-    "
+        group
+        relative
+        min-h-[340px]
+        cursor-pointer
+        overflow-hidden
+        rounded-[1.75rem]
+        border
+        border-[var(--color-border)]
+        bg-[var(--color-surface)]
+        p-6
+        text-[var(--color-text)]
+        outline-none
+        transition-all
+        duration-300
+        hover:shadow-xl
+        focus-visible:ring-2
+        focus-visible:ring-[var(--color-accent)]
+        focus-visible:ring-offset-2
+        focus-visible:ring-offset-[var(--color-bg)]
+        md:p-8
+      "
     >
-      {/* Gradient */}
-
       <div
         className={`
           absolute
           inset-0
-
           bg-gradient-to-br
-
-          ${accentClasses[project.accent]}
-
+          ${accentClasses[project.accent] || "from-blue-500/20 to-transparent"}
           opacity-0
-
           transition-opacity
           duration-500
-
           group-hover:opacity-100
         `}
       />
 
-      {/* Decorative Circle */}
-
       <div
         className="
-            absolute
-
-            -right-20
-            -top-20
-
-            h-56
-            w-56
-
-            rounded-full
-
-            border
-            border-[var(--color-border)]
-
-            opacity-50
-
-            transition-transform
-            duration-700
-
-            group-hover:scale-125
+          absolute
+          -right-20
+          -top-20
+          h-56
+          w-56
+          rounded-full
+          border
+          border-[var(--color-border)]
+          opacity-50
+          transition-transform
+          duration-700
+          group-hover:scale-125
         "
       />
 
       <div
         className="
           relative
-
           z-10
-
           flex
           h-full
-
           min-h-[290px]
-
           flex-col
-
           justify-between
         "
       >
-        {/* Top */}
-
-        <div
-          className="
-                flex
-                items-start
-                justify-between
-            "
-        >
+        <div className="flex items-start justify-between">
           <div
             className="
-                flex
-                h-11
-                w-11
-                items-center
-                justify-center
-
-                rounded-xl
-
-                border
-                border-black/10
-
-                bg-black/[0.03]
-
-                font-mono
-                text-xs
-
-                transition-all
-                duration-300
-
-                group-hover:scale-110
-                group-hover:rotate-3
-
-                dark:border-white/10
-                dark:bg-white/5
-                "
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-[var(--color-border)]
+              bg-[var(--color-surface-soft)]
+              font-mono
+              text-xs
+              text-[var(--color-muted)]
+              transition-all
+              duration-300
+              group-hover:scale-110
+              group-hover:rotate-3
+            "
           >
             0{index + 1}
           </div>
@@ -175,31 +120,25 @@ export default function ProjectCard({ project, index, onClick }) {
           <ArrowUpRight
             size={20}
             className="
-                transition-transform
-                duration-300
-
-                group-hover:translate-x-1
-                group-hover:-translate-y-1
-                "
+              text-[var(--color-muted)]
+              transition-all
+              duration-300
+              group-hover:translate-x-1
+              group-hover:-translate-y-1
+              group-hover:text-[var(--color-text)]
+            "
           />
         </div>
-
-        {/* Content */}
 
         <div>
           <p
             className="
               mb-3
-
               font-mono
-
               text-[10px]
-
               uppercase
-
               tracking-[0.2em]
-
-              text-blue-500
+              text-[var(--color-accent)]
             "
           >
             {project.category}
@@ -208,14 +147,11 @@ export default function ProjectCard({ project, index, onClick }) {
           <h3
             className="
               whitespace-pre-line
-
               text-3xl
               font-black
-
               leading-[1]
-
               tracking-[-0.04em]
-
+              text-[var(--color-text)]
               md:text-4xl
             "
           >
@@ -225,12 +161,9 @@ export default function ProjectCard({ project, index, onClick }) {
           <p
             className="
               mt-5
-
               max-w-sm
-
               text-sm
               leading-6
-
               text-[var(--color-muted)]
             "
           >
@@ -238,40 +171,27 @@ export default function ProjectCard({ project, index, onClick }) {
           </p>
         </div>
 
-        {/* Tech */}
-
         <div
           className="
             flex
-
             items-end
-
             justify-between
-
             border-t
-
-            border-black/10
-
+            border-[var(--color-border)]
             pt-5
-
-            dark:border-white/10
           "
         >
-          <div
-            className="
-              flex
-              flex-wrap
-              gap-2
-            "
-          >
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
             {project.technologies.slice(0, 3).map((technology) => (
               <span
                 key={technology}
                 className="
-                      text-xs
-
-                      text-[var(--color-muted)]
-                    "
+                  text-xs
+                  text-[var(--color-muted)]
+                  transition-colors
+                  duration-300
+                  group-hover:text-[var(--color-text)]
+                "
               >
                 {technology}
               </span>
@@ -281,7 +201,11 @@ export default function ProjectCard({ project, index, onClick }) {
           <Code2
             size={18}
             className="
+              shrink-0
               text-[var(--color-muted)]
+              transition-colors
+              duration-300
+              group-hover:text-[var(--color-text)]
             "
           />
         </div>

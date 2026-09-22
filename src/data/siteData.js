@@ -7,44 +7,64 @@ export const siteData = {
     status: "Open for Co-op",
     email: "supachaisun.dev@gmail.com",
     github: "https://github.com/Supachai-Sungsirin",
-    linkedin: "https://www.linkedin.com/in/supachai-sungsirin-56219a436/",
+    linkedin:
+      "https://www.linkedin.com/in/supachai-sungsirin-56219a436/",
     resume:
       "https://drive.google.com/file/d/1pPh_X2JQsqo73B_uEchAYVQ8HXU0Y39e/view?usp=sharing",
   },
 
   navigation: [
-    { label: "Work", href: "#work" },
-    { label: "About", href: "#about" },
+    {
+      label: "Work",
+      href: "#work",
+    },
+    {
+      label: "About",
+      href: "#about",
+    },
   ],
 
   moreLinks: [
-    { label: "Tech Stack", href: "#stack" },
-    { label: "Education", href: "#education" },
-    { label: "GitHub", href: "https://github.com/Supachai-Sungsirin", external: true },
+    {
+      label: "Tech Stack",
+      href: "#stack",
+    },
+    {
+      label: "Education",
+      href: "#education",
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/Supachai-Sungsirin",
+      external: true,
+    },
     {
       label: "Resume",
       href: "https://drive.google.com/file/d/1pPh_X2JQsqo73B_uEchAYVQ8HXU0Y39e/view?usp=sharing",
       external: true,
     },
-    { label: "Contact", href: "#contact" },
+    {
+      label: "Contact",
+      href: "#contact",
+    },
   ],
 };
 
 export const projects = [
   {
     id: "air-technician",
-
     featured: true,
 
     title: "Air Technician\nBooking System",
+    shortTitle: "Air Technician Booking System",
 
     category: "Full-Stack Application",
 
     description:
-      "A role-based booking platform connecting customers, technicians, and administrators.",
+      "A role-based service booking platform connecting customers with approved air-conditioning technicians.",
 
     longDescription:
-      "A full-stack service booking platform designed to connect customers with approved air-conditioning technicians based on location and service requirements.",
+      "A full-stack service booking platform designed to manage customer requests, technician availability, and administrative approval workflows. The system matches customers with technicians based on service requirements and district.",
 
     technologies: [
       "React",
@@ -68,21 +88,19 @@ export const projects = [
     accent: "blue",
   },
 
-
   {
     id: "fertilizer-shop",
 
     title: "Fertilizer\nShop",
-
     shortTitle: "Fertilizer Shop",
 
     category: "Business Management System",
 
     description:
-      "A role-based POS and inventory management system for a fertilizer shop.",
+      "A role-based business management system for sales, inventory, purchasing, and customer operations.",
 
     longDescription:
-      "A business management system for a fertilizer shop that supports role-based operations across owners, managers, cashiers, and customers, including sales, inventory, purchasing, promotions, and customer points.",
+      "A business management system developed for a fertilizer shop, covering day-to-day operations across owners, managers, cashiers, and customers. The system brings sales, inventory, purchasing, promotions, and customer points into a single application.",
 
     technologies: [
       "ASP.NET Core",
@@ -110,16 +128,15 @@ export const projects = [
     id: "daily-news",
 
     title: "AI Business News\nAssistant",
-
     shortTitle: "Daily News AI",
 
     category: "AI Automation / RAG",
 
     description:
-      "An automated AI business news assistant that delivers daily news digests and answers questions through a RAG-powered LINE chatbot.",
+      "An automated business-news assistant that summarizes daily content and supports question answering through RAG.",
 
     longDescription:
-      "An automated AI news system that fetches business news, summarizes content with an LLM, stores knowledge in a vector database, and answers user questions through a RAG-powered LINE chatbot.",
+      "An automated AI news pipeline that collects business news, generates summaries with an LLM, stores knowledge in a vector database, and provides retrieval-augmented question answering through a LINE chatbot.",
 
     technologies: [
       "n8n",
@@ -148,16 +165,15 @@ export const projects = [
     id: "fitbuddy",
 
     title: "FitBuddy",
-
     shortTitle: "FitBuddy",
 
     category: "AI / RAG Application",
 
     description:
-      "An AI-powered personal fitness assistant using Retrieval-Augmented Generation.",
+      "An AI-powered fitness assistant that retrieves relevant knowledge to support conversational responses.",
 
     longDescription:
-      "An AI-powered fitness assistant that uses Retrieval-Augmented Generation to retrieve relevant fitness knowledge and provide personalized responses based on the available knowledge base.",
+      "An AI-powered fitness assistant built around a Retrieval-Augmented Generation pipeline. The application retrieves relevant information from a fitness knowledge base before generating conversational responses.",
 
     technologies: [
       "Python",
@@ -167,12 +183,12 @@ export const projects = [
     ],
 
     highlights: [
-    "Retrieval-Augmented Generation",
-    "LangChain pipeline",
-    "FAISS vector search",
-    "Fitness knowledge retrieval",
-    "AI-powered conversational responses",
-  ],
+      "Retrieval-Augmented Generation",
+      "LangChain pipeline",
+      "FAISS vector search",
+      "Fitness knowledge retrieval",
+      "AI-powered conversational responses",
+    ],
 
     github:
       "https://github.com/Supachai-Sungsirin/FitBuddy",
@@ -180,21 +196,19 @@ export const projects = [
     accent: "purple",
   },
 
-
   {
     id: "warehouse",
 
     title: "Warehouse\nManagement System",
-
-    shortTitle: "Warehouse System",
+    shortTitle: "Warehouse Management System",
 
     category: "Full-Stack Application",
 
     description:
-      "A role-based warehouse management system for inventory and stock operations.",
+      "A role-based warehouse management system for products, inventory, and stock movement operations.",
 
     longDescription:
-      "A full-stack warehouse management system designed to manage products, stock movements, and inventory operations through role-based access control.",
+      "A full-stack warehouse management system designed to organize product records, inventory, stock movements, and warehouse operations through role-based access control.",
 
     technologies: [
       "React",
@@ -216,5 +230,4 @@ export const projects = [
 
     accent: "orange",
   },
-
 ];
