@@ -1,6 +1,13 @@
 import { motion } from "motion/react";
 
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
+
 export default function QuickAbout() {
+  const { language } = useLanguage();
+
+  const t = translations[language].about;
+
   return (
     <section
       id="about"
@@ -31,7 +38,7 @@ export default function QuickAbout() {
         }}
       >
         <p className="section-kicker">
-          About / 01
+          {t.kicker}
         </p>
 
         <h2
@@ -44,13 +51,11 @@ export default function QuickAbout() {
             md:text-6xl
           "
         >
-          I build practical
+          {t.titleLine1}
           <br />
-
-          web applications
+          {t.titleLine2}
           <br />
-
-          and explore AI.
+          {t.titleLine3}
         </h2>
 
         <p
@@ -62,14 +67,11 @@ export default function QuickAbout() {
             text-[var(--color-muted)]
           "
         >
-          I'm a fourth-year Computer Science student
-          who enjoys turning ideas into practical
-          applications and learning new technologies.
+          {t.description}
         </p>
       </motion.div>
 
       {/* Info Cards */}
-
       <div
         className="
           mt-14
@@ -78,23 +80,14 @@ export default function QuickAbout() {
           md:grid-cols-3
         "
       >
-        <InfoCard
-          number="01"
-          title="Year 4"
-          text="Computer Science"
-        />
-
-        <InfoCard
-          number="02"
-          title="Full-Stack"
-          text="Web Development"
-        />
-
-        <InfoCard
-          number="03"
-          title="AI"
-          text="Exploring Practical AI"
-        />
+        {t.cards.map((card, index) => (
+          <InfoCard
+            key={card.title}
+            number={`0${index + 1}`}
+            title={card.title}
+            text={card.text}
+          />
+        ))}
       </div>
     </section>
   );
@@ -165,20 +158,19 @@ function InfoCard({
       </p>
 
       {/* Hover Glow */}
-
       <div
         className="
           pointer-events-none
           absolute
           inset-0
-          opacity-0
-          transition-opacity
-          duration-300
-          group-hover:opacity-100
           bg-gradient-to-br
           from-blue-500/10
           via-transparent
           to-purple-500/10
+          opacity-0
+          transition-opacity
+          duration-300
+          group-hover:opacity-100
         "
       />
     </motion.div>

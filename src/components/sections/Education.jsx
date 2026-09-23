@@ -1,6 +1,11 @@
 import { motion } from "motion/react";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
 
 export default function Education() {
+  const { language } = useLanguage();
+  const t = translations[language].education;
+
   return (
     <section id="education" className="section-shell">
       <motion.div
@@ -20,8 +25,9 @@ export default function Education() {
           duration: 0.6,
         }}
       >
+        {/* Section Header */}
         <p className="section-kicker">
-          Education / 04
+          {t.kicker}
         </p>
 
         <div
@@ -42,45 +48,46 @@ export default function Education() {
               md:grid-cols-2
             "
           >
+            {/* University */}
             <div className="flex flex-col justify-between gap-8">
               <div>
-              <p
-                className="
-                  font-mono
-                  text-xs
-                  uppercase
-                  tracking-[0.2em]
-                  text-[var(--color-accent)]
-                "
-              >
-                Bachelor's Degree
-              </p>
+                <p
+                  className="
+                    font-mono
+                    text-xs
+                    uppercase
+                    tracking-[0.2em]
+                    text-[var(--color-accent)]
+                  "
+                >
+                  {t.degree}
+                </p>
 
-              <h2
-                className="
-                  mt-4
-                  text-4xl
-                  font-black
-                  leading-[1]
-                  tracking-[-0.05em]
-                  text-[var(--color-text)]
-                  md:text-6xl
-                "
-              >
-                Computer
-                <br />
-                Science.
-              </h2>
+                <h2
+                  className="
+                    mt-4
+                    text-4xl
+                    font-black
+                    leading-[1]
+                    tracking-[-0.05em]
+                    text-[var(--color-text)]
+                    md:text-6xl
+                  "
+                >
+                  {t.titleLine1}
+                  <br />
+                  {t.titleLine2}
+                </h2>
 
-              <p
-                className="
-                  mt-5
-                  text-base
-                  text-[var(--color-muted)]
-                "
-              >
-                Sripatum University
-              </p>
+                <p
+                  className="
+                    mt-5
+                    text-base
+                    text-[var(--color-muted)]
+                  "
+                >
+                  {t.university}
+                </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
@@ -91,7 +98,7 @@ export default function Education() {
                     text-[var(--color-muted)]
                   "
                 >
-                  4th Year
+                  {t.year}
                 </span>
 
                 <span
@@ -113,6 +120,7 @@ export default function Education() {
               </div>
             </div>
 
+            {/* Secondary Education */}
             <div
               className="
                 flex
@@ -138,7 +146,7 @@ export default function Education() {
                     text-[var(--color-accent)]
                   "
                 >
-                  Secondary Education
+                  {t.secondaryDegree}
                 </p>
 
                 <h2
@@ -152,9 +160,9 @@ export default function Education() {
                     md:text-6xl
                   "
                 >
-                  Science
+                  {t.secondaryTitleLine1}
                   <br />
-                  Mathematics.
+                  {t.secondaryTitleLine2}
                 </h2>
 
                 <p
@@ -164,7 +172,7 @@ export default function Education() {
                     text-[var(--color-muted)]
                   "
                 >
-                  Nadee Wittaya School
+                  {t.secondarySchool}
                 </p>
               </div>
 
@@ -176,7 +184,7 @@ export default function Education() {
                     text-[var(--color-muted)]
                   "
                 >
-                  2021 - 2023
+                  {t.secondaryYear}
                 </span>
 
                 <span

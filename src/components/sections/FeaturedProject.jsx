@@ -1,8 +1,18 @@
 import { motion } from "motion/react";
 import { ArrowUpRight, Code2, Layers } from "lucide-react";
 
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
+
 export default function FeaturedProject({ project, onClick }) {
-  const titleLines = project.title.split("\n");
+  const { language } = useLanguage();
+
+  const t = translations[language].projects;
+
+  const localizedProject =
+    project?.translations?.[language] || project;
+
+  const titleLines = localizedProject.title.split("\n");
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -13,16 +23,31 @@ export default function FeaturedProject({ project, onClick }) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7 }}
-      whileHover={{ y: -4 }}
+      initial={{
+        opacity: 0,
+        y: 40,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.7,
+      }}
+      whileHover={{
+        y: -4,
+      }}
       onClick={onClick}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
-      aria-label={`View details for ${project.shortTitle || project.title}`}
+      aria-label={`${t.viewDetails}: ${
+        localizedProject.shortTitle || localizedProject.title
+      }`}
       className="
         group
         relative
@@ -46,6 +71,7 @@ export default function FeaturedProject({ project, onClick }) {
         md:p-10
       "
     >
+      {/* Background Gradient */}
       <div
         className="
           absolute
@@ -61,6 +87,7 @@ export default function FeaturedProject({ project, onClick }) {
         "
       />
 
+      {/* Glow */}
       <div
         className="
           pointer-events-none
@@ -78,8 +105,10 @@ export default function FeaturedProject({ project, onClick }) {
         "
       />
 
+      {/* Grid */}
       <div className="pointer-events-none absolute inset-0 project-grid" />
 
+      {/* Content */}
       <div
         className="
           relative
@@ -90,8 +119,10 @@ export default function FeaturedProject({ project, onClick }) {
           justify-between
         "
       >
+        {/* Top */}
         <div className="flex items-start justify-between">
           <div>
+            {/* Featured Badge */}
             <div
               className="
                 inline-flex
@@ -111,14 +142,16 @@ export default function FeaturedProject({ project, onClick }) {
               "
             >
               <Layers size={14} />
-              FEATURED PROJECT
+              {t.featured}
             </div>
 
+            {/* Category */}
             <p className="mt-4 text-sm text-[var(--color-muted)]">
-              {project.category}
+              {localizedProject.category}
             </p>
           </div>
 
+          {/* Arrow */}
           <div
             className="
               flex
@@ -143,6 +176,7 @@ export default function FeaturedProject({ project, onClick }) {
           </div>
         </div>
 
+        {/* Main Content */}
         <div>
           <div className="overflow-hidden">
             <h3
@@ -164,6 +198,7 @@ export default function FeaturedProject({ project, onClick }) {
             </h3>
           </div>
 
+          {/* Description */}
           <p
             className="
               mt-8
@@ -174,10 +209,11 @@ export default function FeaturedProject({ project, onClick }) {
               md:text-lg
             "
           >
-            {project.longDescription}
+            {localizedProject.longDescription}
           </p>
         </div>
 
+        {/* Bottom */}
         <div
           className="
             flex
@@ -191,8 +227,9 @@ export default function FeaturedProject({ project, onClick }) {
             md:justify-between
           "
         >
+          {/* Technologies */}
           <div className="flex flex-wrap gap-2">
-            {project.technologies.map((technology) => (
+            {localizedProject.technologies?.map((technology) => (
               <span
                 key={technology}
                 className="
@@ -215,6 +252,7 @@ export default function FeaturedProject({ project, onClick }) {
             ))}
           </div>
 
+          {/* Repository */}
           <div
             className="
               flex
@@ -228,7 +266,7 @@ export default function FeaturedProject({ project, onClick }) {
             "
           >
             <Code2 size={16} />
-            View Repository
+            {t.viewRepository}
           </div>
         </div>
       </div>

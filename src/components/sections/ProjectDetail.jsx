@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
+
 import { motion, AnimatePresence } from "motion/react";
+
 import {
   ArrowLeft,
   ArrowRight,
@@ -7,6 +9,9 @@ import {
   Check,
   X,
 } from "lucide-react";
+
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
 
 export default function ProjectDetail({
   project,
@@ -16,18 +21,36 @@ export default function ProjectDetail({
 }) {
   const modalRef = useRef(null);
 
+  const { language } = useLanguage();
+
+  const t = translations[language].projectDetail;
+
   const currentIndex = project
     ? projects.findIndex((item) => item.id === project.id)
     : -1;
 
   const previousProject =
-    currentIndex > 0 ? projects[currentIndex - 1] : null;
+    currentIndex > 0
+      ? projects[currentIndex - 1]
+      : null;
 
   const nextProject =
-    currentIndex >= 0 && currentIndex < projects.length - 1
+    currentIndex >= 0 &&
+    currentIndex < projects.length - 1
       ? projects[currentIndex + 1]
       : null;
 
+  /*
+   * Use localized project data when available.
+   * If a project does not have translations yet,
+   * fall back to the original project data.
+   */
+  const localizedContent =
+    project?.translations?.[language] || project;
+
+  /*
+   * Keyboard navigation
+   */
   useEffect(() => {
     if (!project) return;
 
@@ -37,20 +60,32 @@ export default function ProjectDetail({
         return;
       }
 
-      if (event.key === "ArrowLeft" && previousProject) {
+      if (
+        event.key === "ArrowLeft" &&
+        previousProject
+      ) {
         onSelectProject(previousProject);
         return;
       }
 
-      if (event.key === "ArrowRight" && nextProject) {
+      if (
+        event.key === "ArrowRight" &&
+        nextProject
+      ) {
         onSelectProject(nextProject);
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [
     project,
@@ -60,6 +95,9 @@ export default function ProjectDetail({
     onSelectProject,
   ]);
 
+  /*
+   * Reset modal scroll when project changes
+   */
   useEffect(() => {
     if (!project) return;
 
@@ -70,15 +108,20 @@ export default function ProjectDetail({
     }
   }, [project]);
 
+  /*
+   * Lock background scroll while modal is open
+   */
   useEffect(() => {
     if (!project) return;
 
-    const originalOverflow = document.body.style.overflow;
+    const originalOverflow =
+      document.body.style.overflow;
 
     document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = originalOverflow;
+      document.body.style.overflow =
+        originalOverflow;
     };
   }, [project]);
 
@@ -99,7 +142,10 @@ export default function ProjectDetail({
             md:p-6
           "
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
+            if (
+              event.target ===
+              event.currentTarget
+            ) {
               onClose();
             }
           }}
@@ -109,9 +155,21 @@ export default function ProjectDetail({
             role="dialog"
             aria-modal="true"
             aria-labelledby="project-detail-title"
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.98 }}
+            initial={{
+              opacity: 0,
+              y: 30,
+              scale: 0.98,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              scale: 0.98,
+            }}
             transition={{
               duration: 0.3,
               ease: "easeOut",
@@ -152,7 +210,7 @@ export default function ProjectDetail({
               <button
                 type="button"
                 onClick={onClose}
-                aria-label="Close project details"
+                aria-label={t.close}
                 className="
                   group
                   inline-flex
@@ -178,7 +236,10 @@ export default function ProjectDetail({
                     group-hover:-translate-x-1
                   "
                 />
-                Back
+
+                {language === "th"
+                  ? "กลับ"
+                  : "Back"}
               </button>
 
               <div
@@ -188,14 +249,21 @@ export default function ProjectDetail({
                   text-[var(--color-muted)]
                 "
               >
-                {String(currentIndex + 1).padStart(2, "0")} /{" "}
-                {String(projects.length).padStart(2, "0")}
+                {String(currentIndex + 1).padStart(
+                  2,
+                  "0"
+                )}{" "}
+                /{" "}
+                {String(projects.length).padStart(
+                  2,
+                  "0"
+                )}
               </div>
 
               <button
                 type="button"
                 onClick={onClose}
-                aria-label="Close project details"
+                aria-label={t.close}
                 className="
                   flex
                   h-9
@@ -218,10 +286,18 @@ export default function ProjectDetail({
 
             {/* Content */}
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35 }}
+              key={`${project.id}-${language}`}
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.35,
+              }}
               className="
                 flex-1
                 px-5
@@ -241,7 +317,7 @@ export default function ProjectDetail({
                     text-[var(--color-accent)]
                   "
                 >
-                  {project.category}
+                  {localizedContent.category}
                 </p>
 
                 <h2
@@ -258,7 +334,7 @@ export default function ProjectDetail({
                     md:text-7xl
                   "
                 >
-                  {project.title}
+                  {localizedContent.title}
                 </h2>
 
                 <p
@@ -271,7 +347,7 @@ export default function ProjectDetail({
                     md:text-lg
                   "
                 >
-                  {project.longDescription}
+                  {localizedContent.longDescription}
                 </p>
               </div>
 
@@ -286,7 +362,7 @@ export default function ProjectDetail({
               {/* Overview */}
               <section>
                 <SectionLabel>
-                  Overview
+                  {t.overview}
                 </SectionLabel>
 
                 <p
@@ -299,14 +375,14 @@ export default function ProjectDetail({
                     md:text-base
                   "
                 >
-                  {project.description}
+                  {localizedContent.description}
                 </p>
               </section>
 
               {/* Key Features */}
               <section className="mt-12">
                 <SectionLabel>
-                  Key Features
+                  {t.keyFeatures}
                 </SectionLabel>
 
                 <div
@@ -317,76 +393,80 @@ export default function ProjectDetail({
                     sm:grid-cols-2
                   "
                 >
-                  {project.highlights?.map((highlight) => (
-                    <div
-                      key={highlight}
-                      className="
-                        flex
-                        items-start
-                        gap-3
-                        rounded-2xl
-                        border
-                        border-[var(--color-border)]
-                        bg-[var(--color-surface-soft)]
-                        p-4
-                      "
-                    >
+                  {localizedContent.highlights?.map(
+                    (highlight) => (
                       <div
+                        key={highlight}
                         className="
-                          mt-0.5
                           flex
-                          h-6
-                          w-6
-                          shrink-0
-                          items-center
-                          justify-center
-                          rounded-full
-                          bg-blue-500/10
-                          text-[var(--color-accent)]
+                          items-start
+                          gap-3
+                          rounded-2xl
+                          border
+                          border-[var(--color-border)]
+                          bg-[var(--color-surface-soft)]
+                          p-4
                         "
                       >
-                        <Check size={14} />
-                      </div>
+                        <div
+                          className="
+                            mt-0.5
+                            flex
+                            h-6
+                            w-6
+                            shrink-0
+                            items-center
+                            justify-center
+                            rounded-full
+                            bg-blue-500/10
+                            text-[var(--color-accent)]
+                          "
+                        >
+                          <Check size={14} />
+                        </div>
 
-                      <span
-                        className="
-                          text-sm
-                          leading-6
-                          text-[var(--color-text)]
-                        "
-                      >
-                        {highlight}
-                      </span>
-                    </div>
-                  ))}
+                        <span
+                          className="
+                            text-sm
+                            leading-6
+                            text-[var(--color-text)]
+                          "
+                        >
+                          {highlight}
+                        </span>
+                      </div>
+                    )
+                  )}
                 </div>
               </section>
 
               {/* Tech Stack */}
               <section className="mt-12">
                 <SectionLabel>
-                  Tech Stack
+                  {t.techStack}
                 </SectionLabel>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {project.technologies.map((technology) => (
-                    <span
-                      key={technology}
-                      className="
-                        rounded-full
-                        border
-                        border-[var(--color-border)]
-                        bg-[var(--color-surface-soft)]
-                        px-3
-                        py-1.5
-                        text-xs
-                        font-medium
-                        text-[var(--color-muted)]
-                      "
-                    >
-                      {technology}
-                    </span>
-                  ))}
+                  {project.technologies.map(
+                    (technology) => (
+                      <span
+                        key={technology}
+                        className="
+                          rounded-full
+                          border
+                          border-[var(--color-border)]
+                          bg-[var(--color-surface-soft)]
+                          px-3
+                          py-1.5
+                          text-xs
+                          font-medium
+                          text-[var(--color-muted)]
+                        "
+                      >
+                        {technology}
+                      </span>
+                    )
+                  )}
                 </div>
               </section>
 
@@ -414,7 +494,7 @@ export default function ProjectDetail({
                   >
                     <div>
                       <SectionLabel>
-                        Repository
+                        {t.repository}
                       </SectionLabel>
 
                       <p
@@ -424,7 +504,9 @@ export default function ProjectDetail({
                           text-[var(--color-muted)]
                         "
                       >
-                        Explore the source code and implementation.
+                        {language === "th"
+                          ? "ดู Source Code และรายละเอียดการพัฒนาโปรเจกต์"
+                          : "Explore the source code and implementation."}
                       </p>
                     </div>
 
@@ -450,7 +532,8 @@ export default function ProjectDetail({
                         hover:-translate-y-0.5
                       "
                     >
-                      View Repository
+                      {t.viewRepository}
+
                       <ArrowUpRight
                         size={16}
                         className="
@@ -492,7 +575,9 @@ export default function ProjectDetail({
                   disabled={!previousProject}
                   onClick={() => {
                     if (previousProject) {
-                      onSelectProject(previousProject);
+                      onSelectProject(
+                        previousProject
+                      );
                     }
                   }}
                   className="
@@ -522,7 +607,8 @@ export default function ProjectDetail({
                       group-hover:-translate-x-1
                     "
                   />
-                  Previous
+
+                  {t.previous}
                 </button>
 
                 <button
@@ -552,7 +638,8 @@ export default function ProjectDetail({
                     focus-visible:ring-[var(--color-accent)]
                   "
                 >
-                  Next
+                  {t.next}
+
                   <ArrowRight
                     size={16}
                     className="

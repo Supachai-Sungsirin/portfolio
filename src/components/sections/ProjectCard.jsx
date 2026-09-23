@@ -1,7 +1,18 @@
 import { motion } from "motion/react";
+
 import { ArrowUpRight, Code2 } from "lucide-react";
 
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
+
 export default function ProjectCard({ project, index, onClick }) {
+  const { language } = useLanguage();
+
+  const t = translations[language].projects;
+
+  const localizedProject =
+    project?.translations?.[language] || project;
+
   const accentClasses = {
     green: "from-emerald-500/20 to-transparent",
     purple: "from-purple-500/20 to-transparent",
@@ -19,16 +30,32 @@ export default function ProjectCard({ project, index, onClick }) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -6 }}
+      initial={{
+        opacity: 0,
+        y: 30,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.08,
+      }}
+      whileHover={{
+        y: -6,
+      }}
       onClick={onClick}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
-      aria-label={`View details for ${project.shortTitle || project.title}`}
+      aria-label={`${t.viewDetails}: ${
+        localizedProject.shortTitle || localizedProject.title
+      }`}
       className="
         group
         relative
@@ -52,12 +79,16 @@ export default function ProjectCard({ project, index, onClick }) {
         md:p-8
       "
     >
+      {/* Accent Gradient */}
       <div
         className={`
           absolute
           inset-0
           bg-gradient-to-br
-          ${accentClasses[project.accent] || "from-blue-500/20 to-transparent"}
+          ${
+            accentClasses[project.accent] ||
+            "from-blue-500/20 to-transparent"
+          }
           opacity-0
           transition-opacity
           duration-500
@@ -65,6 +96,7 @@ export default function ProjectCard({ project, index, onClick }) {
         `}
       />
 
+      {/* Decorative Circle */}
       <div
         className="
           absolute
@@ -82,6 +114,7 @@ export default function ProjectCard({ project, index, onClick }) {
         "
       />
 
+      {/* Content */}
       <div
         className="
           relative
@@ -93,7 +126,9 @@ export default function ProjectCard({ project, index, onClick }) {
           justify-between
         "
       >
+        {/* Top */}
         <div className="flex items-start justify-between">
+          {/* Project Number */}
           <div
             className="
               flex
@@ -117,6 +152,7 @@ export default function ProjectCard({ project, index, onClick }) {
             0{index + 1}
           </div>
 
+          {/* Arrow */}
           <ArrowUpRight
             size={20}
             className="
@@ -130,7 +166,9 @@ export default function ProjectCard({ project, index, onClick }) {
           />
         </div>
 
+        {/* Project Information */}
         <div>
+          {/* Category */}
           <p
             className="
               mb-3
@@ -141,9 +179,10 @@ export default function ProjectCard({ project, index, onClick }) {
               text-[var(--color-accent)]
             "
           >
-            {project.category}
+            {localizedProject.category}
           </p>
 
+          {/* Title */}
           <h3
             className="
               whitespace-pre-line
@@ -155,9 +194,10 @@ export default function ProjectCard({ project, index, onClick }) {
               md:text-4xl
             "
           >
-            {project.title}
+            {localizedProject.title}
           </h3>
 
+          {/* Description */}
           <p
             className="
               mt-5
@@ -167,10 +207,11 @@ export default function ProjectCard({ project, index, onClick }) {
               text-[var(--color-muted)]
             "
           >
-            {project.description}
+            {localizedProject.description}
           </p>
         </div>
 
+        {/* Technologies */}
         <div
           className="
             flex

@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
 
 const stackGroups = [
   {
-    title: "Frontend",
+    key: "frontend",
     technologies: [
       "React",
       "JavaScript",
@@ -12,7 +14,7 @@ const stackGroups = [
     ],
   },
   {
-    title: "Backend",
+    key: "backend",
     technologies: [
       "Node.js",
       "Express",
@@ -23,7 +25,7 @@ const stackGroups = [
     ],
   },
   {
-    title: "Database",
+    key: "database",
     technologies: [
       "MongoDB",
       "MySQL",
@@ -32,7 +34,7 @@ const stackGroups = [
     ],
   },
   {
-    title: "AI / Tools",
+    key: "aiTools",
     technologies: [
       "LangChain",
       "RAG",
@@ -46,6 +48,9 @@ const stackGroups = [
 ];
 
 export default function TechStack() {
+  const { language } = useLanguage();
+  const t = translations[language].techStack;
+
   return (
     <section id="stack" className="section-shell">
       <motion.div
@@ -65,8 +70,9 @@ export default function TechStack() {
           duration: 0.6,
         }}
       >
+        {/* Section Header */}
         <p className="section-kicker">
-          Tech Stack / 03
+          {t.kicker}
         </p>
 
         <div
@@ -80,9 +86,9 @@ export default function TechStack() {
           "
         >
           <h2 className="section-title max-w-3xl">
-            Tools I use
+            {t.titleLine1}
             <br />
-            to build things.
+            {t.titleLine2}
           </h2>
 
           <p
@@ -93,11 +99,11 @@ export default function TechStack() {
               text-[var(--color-muted)]
             "
           >
-            Technologies and tools I have used across full-stack,
-            business, and AI-focused projects.
+            {t.description}
           </p>
         </div>
 
+        {/* Tech Stack Groups */}
         <div
           className="
             mt-12
@@ -108,7 +114,7 @@ export default function TechStack() {
         >
           {stackGroups.map((group, index) => (
             <motion.div
-              key={group.title}
+              key={group.key}
               initial={{
                 opacity: 0,
                 y: 20,
@@ -143,7 +149,7 @@ export default function TechStack() {
                     text-[var(--color-text)]
                   "
                 >
-                  {group.title}
+                  {t.groups[group.key]}
                 </h3>
 
                 <span

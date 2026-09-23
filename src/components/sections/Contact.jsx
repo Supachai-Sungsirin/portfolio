@@ -1,26 +1,37 @@
 import { motion } from "motion/react";
 import { ArrowUpRight, Mail, FileText } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
 
 const contactLinks = [
   {
-    label: "Email",
+    key: "email",
     value: "supachaisun.dev@gmail.com",
     href: "mailto:supachaisun.dev@gmail.com",
     icon: Mail,
   },
   {
-    label: "GitHub",
+    key: "github",
     value: "github.com/Supachai-Sungsirin",
     href: "https://github.com/Supachai-Sungsirin",
   },
   {
-    label: "LinkedIn",
+    key: "linkedin",
     value: "linkedin.com/in/supachai-sungsirin-56219a436",
     href: "https://www.linkedin.com/in/supachai-sungsirin-56219a436/",
   },
 ];
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const t = translations[language].contact;
+
+  const contactLabels = {
+    email: t.email,
+    github: t.github,
+    linkedin: t.linkedin,
+  };
+
   return (
     <section
       id="contact"
@@ -46,8 +57,9 @@ export default function Contact() {
           duration: 0.6,
         }}
       >
+        {/* Section Header */}
         <p className="section-kicker">
-          Contact / 05
+          {t.kicker}
         </p>
 
         <div
@@ -82,7 +94,7 @@ export default function Contact() {
                   text-[var(--color-accent)]
                 "
               >
-                Open for Co-op
+                {t.status}
               </p>
 
               <h2
@@ -97,9 +109,9 @@ export default function Contact() {
                   md:text-7xl
                 "
               >
-                Let's build
+                {t.titleLine1}
                 <br />
-                something useful.
+                {t.titleLine2}
               </h2>
 
               <p
@@ -112,12 +124,11 @@ export default function Contact() {
                   md:text-lg
                 "
               >
-                I'm currently looking for a cooperative education
-                opportunity where I can contribute, learn, and build
-                real-world software.
+                {t.description}
               </p>
             </div>
 
+            {/* Get in Touch */}
             <a
               href="mailto:supachaisun.dev@gmail.com"
               className="
@@ -139,7 +150,7 @@ export default function Contact() {
                 hover:-translate-y-1
               "
             >
-              Get in touch
+              {t.button}
 
               <ArrowUpRight
                 size={18}
@@ -153,6 +164,7 @@ export default function Contact() {
             </a>
           </div>
 
+          {/* Contact Links */}
           <div
             className="
               mt-10
@@ -168,9 +180,13 @@ export default function Contact() {
 
               return (
                 <a
-                  key={link.label}
+                  key={link.key}
                   href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  target={
+                    link.href.startsWith("http")
+                      ? "_blank"
+                      : undefined
+                  }
                   rel={
                     link.href.startsWith("http")
                       ? "noopener noreferrer"
@@ -209,7 +225,11 @@ export default function Contact() {
                       group-hover:text-[var(--color-text)]
                     "
                   >
-                    {Icon ? <Icon size={17} /> : <ArrowUpRight size={17} />}
+                    {Icon ? (
+                      <Icon size={17} />
+                    ) : (
+                      <ArrowUpRight size={17} />
+                    )}
                   </div>
 
                   <div className="min-w-0">
@@ -220,7 +240,7 @@ export default function Contact() {
                         text-[var(--color-muted)]
                       "
                     >
-                      {link.label}
+                      {contactLabels[link.key]}
                     </p>
 
                     <p
@@ -239,6 +259,7 @@ export default function Contact() {
             })}
           </div>
 
+          {/* Resume */}
           <div
             className="
               mt-6
@@ -271,7 +292,7 @@ export default function Contact() {
               "
             >
               <FileText size={16} />
-              View Resume
+              {t.resume}
             </a>
           </div>
         </div>

@@ -9,6 +9,7 @@ import Education from "../components/sections/Education";
 import Contact from "../components/sections/Contact";
 
 import { useTheme } from "../hooks/useTheme";
+import { LanguageProvider } from "../context/LanguageContext";
 
 export default function Home() {
   const {
@@ -17,34 +18,31 @@ export default function Home() {
   } = useTheme();
 
   return (
-    <div
-      id="top"
-      className="
-        min-h-screen
-        bg-[var(--color-bg)]
-        text-[var(--color-text)]
-      "
-    >
-      <MouseSpotlight />
+    <LanguageProvider>
+      <div
+        id="top"
+        className="
+          min-h-screen
+          bg-[var(--color-bg)]
+          text-[var(--color-text)]
+        "
+      >
+        <MouseSpotlight />
 
-      <Navbar
-        isDark={isDark}
-        onThemeToggle={toggleTheme}
-      />
+        <Navbar
+          isDark={isDark}
+          onThemeToggle={toggleTheme}
+        />
 
-      <main>
-        <Hero />
-
-        <QuickAbout />
-
-        <Projects />
-
-        <TechStack />
-
-        <Education />
-
-        <Contact />
-      </main>
-    </div>
+        <main>
+          <Hero />
+          <QuickAbout />
+          <Projects />
+          <TechStack />
+          <Education />
+          <Contact />
+        </main>
+      </div>
+    </LanguageProvider>
   );
 }

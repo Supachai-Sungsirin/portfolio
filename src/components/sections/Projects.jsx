@@ -1,15 +1,28 @@
 import { useState } from "react";
+
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
 import { projects } from "../../data/siteData";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
+
 import FeaturedProject from "./FeaturedProject";
 import ProjectCard from "./ProjectCard";
 import ProjectDetail from "./ProjectDetail";
 
 export default function Projects() {
-  const featuredProject = projects.find((project) => project.featured);
-  const otherProjects = projects.filter((project) => !project.featured);
+  const { language } = useLanguage();
+
+  const t = translations[language].projects;
+
+  const featuredProject = projects.find(
+    (project) => project.featured
+  );
+
+  const otherProjects = projects.filter(
+    (project) => !project.featured
+  );
 
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -43,8 +56,9 @@ export default function Projects() {
           duration: 0.6,
         }}
       >
+        {/* Section Kicker */}
         <p className="section-kicker">
-          Selected Work / 02
+          {t.kicker}
         </p>
 
         <div
@@ -57,6 +71,7 @@ export default function Projects() {
             md:justify-between
           "
         >
+          {/* Heading */}
           <h2
             className="
               max-w-3xl
@@ -64,13 +79,15 @@ export default function Projects() {
               font-black
               leading-[1.05]
               tracking-[-0.05em]
+              md:text-6xl
             "
           >
-            Things I've built
+            {t.titleLine1}
             <br />
-            along the way.
+            {t.titleLine2}
           </h2>
 
+          {/* Description */}
           <p
             className="
               max-w-md
@@ -79,8 +96,7 @@ export default function Projects() {
               text-[var(--color-muted)]
             "
           >
-            A collection of full-stack systems, business applications, and AI
-            experiments.
+            {t.description}
           </p>
         </div>
       </motion.div>
@@ -149,7 +165,7 @@ export default function Projects() {
             hover:text-[var(--color-text)]
           "
         >
-          View all projects on GitHub
+          {t.viewAll}
 
           <ArrowUpRight
             size={18}
@@ -171,4 +187,4 @@ export default function Projects() {
       />
     </section>
   );
-}
+} 

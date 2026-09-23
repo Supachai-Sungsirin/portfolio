@@ -1,10 +1,18 @@
 import { motion, useScroll, useTransform } from "motion/react";
+
 import { ArrowDown } from "lucide-react";
 
 import MagneticButton from "../ui/MagneticButton";
 import ScrollIndicator from "../ui/ScrollIndicator";
 
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../data/translations";
+
 export default function Hero() {
+  const { language } = useLanguage();
+
+  const t = translations[language].hero;
+
   const { scrollY } = useScroll();
 
   const opacity = useTransform(
@@ -27,24 +35,23 @@ export default function Hero() {
 
   return (
     <section
-        className="
-            relative
-            flex
-            min-h-[100svh]
-            overflow-hidden
-            px-5
-            pt-20
-            pb-24
-            sm:pt-24
-            md:px-6
-            md:pt-28
-            md:pb-28
-            lg:items-center
-            lg:pt-24
-        "
+      className="
+        relative
+        flex
+        min-h-[100svh]
+        overflow-hidden
+        px-5
+        pt-20
+        pb-24
+        sm:pt-24
+        md:px-6
+        md:pt-28
+        md:pb-28
+        lg:items-center
+        lg:pt-24
+      "
     >
       {/* Background Glow */}
-
       <div
         className="
           pointer-events-none
@@ -62,7 +69,6 @@ export default function Hero() {
       />
 
       {/* Grid */}
-
       <div
         className="
           pointer-events-none
@@ -75,27 +81,25 @@ export default function Hero() {
       />
 
       {/* Content */}
-
       <motion.div
         style={{
-            opacity,
-            scale,
-            filter: blur,
+          opacity,
+          scale,
+          filter: blur,
         }}
         className="
-            relative
-            z-10
-            mx-auto
-            w-full
-            max-w-6xl
-            pt-10
-            sm:pt-14
-            md:pt-20
-            lg:pt-0
+          relative
+          z-10
+          mx-auto
+          w-full
+          max-w-6xl
+          pt-10
+          sm:pt-14
+          md:pt-20
+          lg:pt-0
         "
-        >
+      >
         {/* Label */}
-
         <motion.p
           initial={{
             opacity: 0,
@@ -119,11 +123,10 @@ export default function Hero() {
             dark:text-blue-400
           "
         >
-          Portfolio / 2026
+          {t.label}
         </motion.p>
 
         {/* Name */}
-
         <div className="overflow-hidden">
           <motion.h1
             initial={{
@@ -174,7 +177,6 @@ export default function Hero() {
         </div>
 
         {/* Bottom */}
-
         <motion.div
           initial={{
             opacity: 0,
@@ -207,10 +209,9 @@ export default function Hero() {
                 md:text-xl
               "
             >
-              Computer Science Student.
+              {t.role}
               <br />
-
-              Full-Stack & AI Developer.
+              {t.developer}
             </p>
 
             <div
@@ -241,13 +242,12 @@ export default function Hero() {
                 "
               />
 
-              Open for Co-op
+              {t.status}
             </div>
           </div>
 
           <MagneticButton href="#work">
-            Explore Work
-
+            {t.explore}
             <ArrowDown size={18} />
           </MagneticButton>
         </motion.div>
