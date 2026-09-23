@@ -25,25 +25,20 @@ export const translations = {
 
     about: {
       kicker: "เกี่ยวกับ / 01",
+
       titleLine1: "ผมสร้าง",
       titleLine2: "Web Application",
       titleLine3: "และเรียนรู้ด้าน AI",
+
       description:
-        "นักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4 ที่สนใจการพัฒนาแอปพลิเคชันที่สามารถนำไปใช้งานได้จริง พร้อมเรียนรู้และทดลองเทคโนโลยีใหม่ ๆ",
-      cards: [
-        {
-          title: "ปี 4",
-          text: "วิทยาการคอมพิวเตอร์",
-        },
-        {
-          title: "Full-Stack",
-          text: "การพัฒนาเว็บ",
-        },
-        {
-          title: "AI",
-          text: "การประยุกต์ใช้ AI",
-        },
-      ],
+        "ผมเป็นนักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4 จากมหาวิทยาลัยศรีปทุม สนใจการพัฒนา Web Application และ Full-Stack System ตั้งแต่การออกแบบ Frontend ไปจนถึง Backend และ Database นอกจากนี้ยังสนใจการประยุกต์ใช้ AI, RAG และ Automation เพื่อสร้างระบบที่สามารถนำไปใช้งานได้จริง ปัจจุบันกำลังมองหาโอกาสสหกิจศึกษาเพื่อพัฒนาทักษะและได้เรียนรู้จากการทำงานกับโปรเจกต์จริง",
+
+      currently: {
+        label: "ปัจจุบัน",
+        title: "นักศึกษาวิทยาการคอมพิวเตอร์ชั้นปีที่ 4",
+        subtitle: "มหาวิทยาลัยศรีปทุม",
+        status: "เปิดรับสหกิจศึกษา",
+      },
     },
 
     projects: {
@@ -140,25 +135,20 @@ export const translations = {
 
     about: {
       kicker: "About / 01",
+
       titleLine1: "I build practical",
       titleLine2: "web applications",
       titleLine3: "and explore AI.",
+
       description:
-        "I'm a fourth-year Computer Science student who enjoys turning ideas into practical applications and learning new technologies.",
-      cards: [
-        {
-          title: "Year 4",
-          text: "Computer Science",
-        },
-        {
-          title: "Full-Stack",
-          text: "Web Development",
-        },
-        {
-          title: "AI",
-          text: "Exploring Practical AI",
-        },
-      ],
+        "I'm a fourth-year Computer Science student at Sripatum University. I enjoy building web applications and full-stack systems across frontend, backend, and database layers. I'm also exploring AI, RAG, and automation to turn ideas into practical applications. Currently, I'm looking for a cooperative education opportunity where I can contribute to real-world projects while continuing to grow as a developer.",
+
+      currently: {
+        label: "Currently",
+        title: "4th-year Computer Science student",
+        subtitle: "Sripatum University",
+        status: "Looking for Co-op",
+      },
     },
 
     projects: {

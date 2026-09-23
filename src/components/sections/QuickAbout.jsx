@@ -5,7 +5,6 @@ import { translations } from "../../data/translations";
 
 export default function QuickAbout() {
   const { language } = useLanguage();
-
   const t = translations[language].about;
 
   return (
@@ -31,15 +30,13 @@ export default function QuickAbout() {
         }}
         viewport={{
           once: true,
-          amount: 0.3,
+          amount: 0.2,
         }}
         transition={{
           duration: 0.6,
         }}
       >
-        <p className="section-kicker">
-          {t.kicker}
-        </p>
+        <p className="section-kicker">{t.kicker}</p>
 
         <h2
           className="
@@ -61,118 +58,115 @@ export default function QuickAbout() {
         <p
           className="
             mt-8
-            max-w-2xl
+            max-w-3xl
             text-lg
             leading-8
             text-[var(--color-muted)]
+            md:text-xl
+            md:leading-9
           "
         >
           {t.description}
         </p>
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.1,
+          }}
+          className="
+            mt-10
+            flex
+            flex-col
+            gap-5
+            rounded-[1.5rem]
+            border
+            border-[var(--color-border)]
+            bg-[var(--color-surface)]
+            p-5
+            md:flex-row
+            md:items-center
+            md:justify-between
+            md:p-6
+          "
+        >
+          <div>
+            <p
+              className="
+                font-mono
+                text-[10px]
+                uppercase
+                tracking-[0.2em]
+                text-[var(--color-accent)]
+              "
+            >
+              {t.currently.label}
+            </p>
+
+            <p
+              className="
+                mt-2
+                text-base
+                font-semibold
+                text-[var(--color-text)]
+              "
+            >
+              {t.currently.title}
+            </p>
+
+            <p
+              className="
+                mt-1
+                text-sm
+                text-[var(--color-muted)]
+              "
+            >
+              {t.currently.subtitle}
+            </p>
+          </div>
+
+          <div
+            className="
+              inline-flex
+              w-fit
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-[var(--color-border)]
+              bg-[var(--color-surface-soft)]
+              px-4
+              py-2
+              text-xs
+              font-medium
+              text-[var(--color-accent)]
+            "
+          >
+            <span
+              className="
+                h-2
+                w-2
+                rounded-full
+                bg-[var(--color-accent)]
+              "
+            />
+
+            {t.currently.status}
+          </div>
+        </motion.div>
       </motion.div>
-
-      {/* Info Cards */}
-      <div
-        className="
-          mt-14
-          grid
-          gap-4
-          md:grid-cols-3
-        "
-      >
-        {t.cards.map((card, index) => (
-          <InfoCard
-            key={card.title}
-            number={`0${index + 1}`}
-            title={card.title}
-            text={card.text}
-          />
-        ))}
-      </div>
     </section>
-  );
-}
-
-function InfoCard({
-  number,
-  title,
-  text,
-}) {
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: 25,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-      }}
-      whileHover={{
-        y: -6,
-      }}
-      className="
-        group
-        relative
-        overflow-hidden
-        rounded-2xl
-        border
-        border-black/10
-        bg-[var(--color-surface)]
-        p-6
-        transition
-        dark:border-white/10
-      "
-    >
-      <span
-        className="
-          font-mono
-          text-xs
-          text-blue-500
-        "
-      >
-        {number}
-      </span>
-
-      <h3
-        className="
-          mt-8
-          text-2xl
-          font-bold
-        "
-      >
-        {title}
-      </h3>
-
-      <p
-        className="
-          mt-2
-          text-sm
-          text-[var(--color-muted)]
-        "
-      >
-        {text}
-      </p>
-
-      {/* Hover Glow */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          bg-gradient-to-br
-          from-blue-500/10
-          via-transparent
-          to-purple-500/10
-          opacity-0
-          transition-opacity
-          duration-300
-          group-hover:opacity-100
-        "
-      />
-    </motion.div>
   );
 }
