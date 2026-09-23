@@ -1,16 +1,92 @@
-# React + Vite
+# Portfolio — Supachai Sungsirin
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+โปรเจกต์เว็บไซต์พอร์ตโฟลิโอส่วนตัวของ **Supachai Sungsirin**
+นักศึกษาสาขา Computer Science จาก Sripatum University | Full-Stack & AI Developer
 
-Currently, two official plugins are available:
+🔗 Repository: [github.com/Supachai-Sungsirin/portfolio](https://github.com/Supachai-Sungsirin/portfolio)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## เกี่ยวกับโปรเจกต์
 
-## React Compiler
+เว็บไซต์พอร์ตโฟลิโอที่แสดงผลงาน (Projects), ทักษะด้านเทคโนโลยี (Tech Stack), ประวัติการศึกษา (Education) และช่องทางการติดต่อ (Contact) โดยพัฒนาด้วย React + Vite พร้อมดีไซน์ที่ทันสมัย มี dark/light mode และแอนิเมชันที่ลื่นไหล
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React 19** — UI Library
+- **Vite** — Build Tool / Dev Server
+- **React Router DOM** — Routing
+- **Tailwind CSS** — Styling
+- **Motion** — Animation
+- **Lucide React** — Icons
+- **ESLint** — Code Linting
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 โครงสร้างโปรเจกต์
+
+```
+portfolio/
+├── public/               # ไฟล์ static เช่น favicon, รูปโปรไฟล์
+├── src/
+│   ├── assets/           # รูปภาพและไฟล์สื่อต่าง ๆ
+│   ├── components/
+│   │   ├── layout/       # Navbar และคอมโพเนนต์โครงสร้างหลัก
+│   │   ├── sections/     # ส่วนต่าง ๆ ของหน้าเว็บ (Hero, Projects, Education, Contact ฯลฯ)
+│   │   └── ui/           # คอมโพเนนต์ UI ย่อย (ปุ่ม, spotlight, theme toggle ฯลฯ)
+│   ├── context/          # React Context (เช่น Theme)
+│   ├── data/             # ข้อมูลเนื้อหาเว็บไซต์และคำแปลภาษา (siteData.js, translations.js)
+│   ├── hooks/            # Custom React Hooks
+│   ├── pages/            # หน้าเว็บหลัก (Home.jsx)
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── package.json
+├── tailwind.config.js
+└── vite.config.js
+```
+
+## 🛠️ วิธีติดตั้งและรันโปรเจกต์
+
+1. Clone repository
+
+   ```bash
+   git clone https://github.com/Supachai-Sungsirin/portfolio.git
+   cd portfolio
+   ```
+
+2. ติดตั้ง dependencies
+
+   ```bash
+   npm install
+   ```
+
+3. รันเซิร์ฟเวอร์สำหรับพัฒนา (Development)
+
+   ```bash
+   npm run dev
+   ```
+
+4. Build โปรเจกต์สำหรับ production
+
+   ```bash
+   npm run build
+   ```
+
+5. Preview ไฟล์ที่ build แล้ว
+
+   ```bash
+   npm run preview
+   ```
+
+6. ตรวจสอบโค้ดด้วย ESLint
+
+   ```bash
+   npm run lint
+   ```
+
+## 📬 ติดต่อ
+
+- **GitHub:** [Supachai-Sungsirin](https://github.com/Supachai-Sungsirin)
+- **LinkedIn:** [Supachai Sungsirin](https://www.linkedin.com/in/supachai-sungsirin-56219a436/)
+- **Email:** supachaisun.dev@gmail.com
+
+---
+
+Made with ❤️ using React + Vite
